@@ -8,7 +8,7 @@
 <?import javafx.scene.shape.Circle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F1E4EC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F1E4EC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Controller">
    <children>
       <Label layoutX="142.0" layoutY="50.0" prefHeight="36.0" prefWidth="337.0" text="Bienvenue sur CollabCampus" textFill="#66003e">
          <font>
@@ -26,7 +26,7 @@
          </image>
       </ImageView>
       <Circle fill="#66003e" layoutX="300.0" layoutY="222.0" radius="45.0" stroke="TRANSPARENT" strokeType="INSIDE" />
-      <Button layoutX="280.0" layoutY="204.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="40.0" text="+">
+      <Button layoutX="280.0" layoutY="204.0" mnemonicParsing="false" onAction="#switchToScene2" prefHeight="36.0" prefWidth="40.0" text="+">
          <font>
             <Font size="17.0" />
          </font>

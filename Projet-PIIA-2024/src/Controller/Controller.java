@@ -35,12 +35,11 @@ public class Controller {
         stage.show();
     }
 
-    public void switchToScene2(ActionEvent event) throws IOException {
-        root = FXMLLoader.load(getClass().getResource("/page-accueil2.fxml"));
-        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+    public void switchToScene2(javafx.event.ActionEvent actionEvent) throws IOException{
+        root = FXMLLoader.load(getClass().getResource("/View/page-accueil2.fxml"));
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
         scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
     }
-
 }
