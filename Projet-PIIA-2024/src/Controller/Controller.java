@@ -27,10 +27,6 @@ public class Controller {
     private Parent root;
 
     // methods
-    public void switchToScene1(ActionEvent event) throws IOException {
-
-    }
-
     public void switchToScene2(javafx.event.ActionEvent actionEvent) throws IOException{
         root = FXMLLoader.load(getClass().getResource("/View/page-accueil2.fxml"));
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();

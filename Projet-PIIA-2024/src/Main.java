@@ -10,7 +10,7 @@ public class Main extends Application {
     public void start(Stage primaryStage) {
         try {
             Parent root = FXMLLoader.load(getClass().getResource("/View/page-accueil.fxml"));
-            primaryStage.setTitle("CollabCampus");
+            primaryStage.setTitle("CollabCampus - Page d'accueil");
             Scene scene = new Scene(root);
             primaryStage.setScene(scene);
             primaryStage.show();
