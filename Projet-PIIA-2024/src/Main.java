@@ -1,18 +1,25 @@
 import javafx.application.Application;
-import javafx.scene.Group;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    public void start(Stage primaryStage) throws Exception{
-        // Create a new Scene
-        Scene scene = new Scene(new Group(), 450, 250);
-        primaryStage.setScene(scene);
-        primaryStage.setTitle("JavaFX Welcome");
-        primaryStage.show();
+    @Override
+    public void start(Stage primaryStage) {
+        try {
+            Parent root = FXMLLoader.load(getClass().getResource("View/page-accueil.fxml"));
+            primaryStage.setTitle("CollabCampus");
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
+
     public static void main(String[] args) {
-        Application.launch(args);
+        launch(args);
     }
 }
