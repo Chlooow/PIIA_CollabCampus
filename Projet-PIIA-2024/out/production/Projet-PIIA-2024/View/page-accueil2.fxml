@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -7,7 +8,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F1E4EC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F1E4EC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Controller">
    <children>
       <Label layoutX="142.0" layoutY="50.0" prefHeight="36.0" prefWidth="337.0" text="Bienvenue sur CollabCampus" textFill="#66003e">
          <font>
@@ -29,17 +30,18 @@
             <Font name="Arial" size="12.0" />
          </font>
       </Label>
-      <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#66003e" height="48.0" layoutX="211.0" layoutY="168.0" stroke="TRANSPARENT" strokeType="INSIDE" width="200.0" />
-      <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#66003e" height="48.0" layoutX="211.0" layoutY="240.0" stroke="TRANSPARENT" strokeType="INSIDE" width="200.0" />
-      <Label layoutX="224.0" layoutY="183.0" text="Charger un Texte en lecture seul " textFill="WHITE">
+      <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#66003e" height="48.0" layoutX="200.0" layoutY="167.0" stroke="TRANSPARENT" strokeType="INSIDE" width="200.0" />
+      <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#66003e" height="48.0" layoutX="201.0" layoutY="240.0" stroke="TRANSPARENT" strokeType="INSIDE" width="200.0" />
+      <Label layoutX="211.0" layoutY="183.0" text="Charger un Texte en lecture seul " textFill="WHITE">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </Label>
-      <Label layoutX="239.0" layoutY="256.0" text="Charger un Texte et éditer " textFill="WHITE">
+      <Label layoutX="227.0" layoutY="256.0" text="Charger un Texte et éditer " textFill="#f6f6f6">
          <font>
             <Font name="Arial" size="12.0" />
          </font>
       </Label>
+      <Button layoutX="68.0" layoutY="207.0" mnemonicParsing="false" onAction="#switchToScene1" style="-fx-background-color: #66003E;" />
    </children>
 </AnchorPane>
