@@ -1,68 +1,38 @@
 package View;
 
 import Models.FileModel;
-import javafx.scene.Scene;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
-import javafx.scene.layout.VBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 
 
 public class FileView {
     private FileModel model;
+    @FXML
+    public MenuItem menuItemOpenReadOnly;
+    @FXML
+    private TextArea textOpenReadOnly;
+
 
     public FileView(FileModel model) {
         this.model = model;
+        this.textOpenReadOnly = new TextArea("String");
     }
 
-    public void createUI(Stage primaryStage) {
-        primaryStage.setTitle("CollabCampus");
-
-        // UI components creation
-        // La barre de menu
-        MenuBar menuBar = new MenuBar();
-
-        // Le menu fichier
-        Menu menuFile = new Menu("Fichier");
-        MenuItem menuItemCreate = new MenuItem("Crée un fichier");
-        MenuItem menuItemOpenReadOnly = new MenuItem("Ouvrir en lecture seule");
-        MenuItem menuItemOpenToEdit = new MenuItem("Ouvrir pour modifier");
-        MenuItem menuItemSave = new MenuItem("Enregistrer");
-        menuFile.getItems().addAll(menuItemOpenReadOnly, menuItemOpenToEdit, menuItemSave);
-        menuBar.getMenus().add(menuFile);
-
-        // -------------------------
-
-
-        // Champ de texte
-        TextArea textArea = new TextArea();
-        textArea.setEditable(false);
-        VBox root = new VBox();
-
-        // We add everything to the root
-        root.getChildren().addAll(menuBar, textArea);
-
-
-
-
-
-        // Set up event handlers
-        menuItemOpenReadOnly.setOnAction(e -> openFile(primaryStage, textArea, false));
-        menuItemOpenToEdit.setOnAction(e -> openFile(primaryStage, textArea, true));
-        menuItemSave.setOnAction(e -> saveFile(textArea));
-
-        // Display the scene
-        Scene scene = new Scene(root, 600, 300);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+    // getter
+    public TextArea getTextOpenReadOnly() {
+        return textOpenReadOnly;
     }
 
-    private void openFile(Stage primaryStage, TextArea textArea, boolean editable) {
+    public void openFile(Stage primaryStage, TextArea textArea, boolean editable) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Ouvrir un fichier");
         fileChooser.getExtensionFilters().addAll(
@@ -72,13 +42,31 @@ public class FileView {
         File selectedFile = fileChooser.showOpenDialog(primaryStage);
 
         if (selectedFile != null) {
+            System.out.print("lol");
             model.openFile(selectedFile);
-            try {
+            /*try {
                 textArea.setText(model.readFileContent());
             } catch (Exception ex) {
                 ex.printStackTrace();
-            }
+            }*/
+            displayFileContent(selectedFile, textArea);
             textArea.setEditable(editable);
+        }
+    }
+
+    // Méthode pour afficher le contenu du fichier dans la zone de texte
+    private void displayFileContent(File file, TextArea textArea) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(file))) {
+            StringBuilder content = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+
+                content.append(line).append("\n");
+            }
+            System.out.print("haha");
+            textArea.setText(content.toString());
+        } catch (IOException ex) {
+            ex.printStackTrace();
         }
     }
 
@@ -89,5 +77,4 @@ public class FileView {
             ex.printStackTrace();
         }
     }
-
 }
