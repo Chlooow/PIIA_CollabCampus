@@ -24,17 +24,32 @@ public class FileView {
         primaryStage.setTitle("CollabCampus");
 
         // UI components creation
+        // La barre de menu
         MenuBar menuBar = new MenuBar();
+
+        // Le menu fichier
         Menu menuFile = new Menu("Fichier");
+        MenuItem menuItemCreate = new MenuItem("Crée un fichier");
         MenuItem menuItemOpenReadOnly = new MenuItem("Ouvrir en lecture seule");
         MenuItem menuItemOpenToEdit = new MenuItem("Ouvrir pour modifier");
         MenuItem menuItemSave = new MenuItem("Enregistrer");
         menuFile.getItems().addAll(menuItemOpenReadOnly, menuItemOpenToEdit, menuItemSave);
         menuBar.getMenus().add(menuFile);
+
+        // -------------------------
+
+
+        // Champ de texte
         TextArea textArea = new TextArea();
         textArea.setEditable(false);
         VBox root = new VBox();
+
+        // We add everything to the root
         root.getChildren().addAll(menuBar, textArea);
+
+
+
+
 
         // Set up event handlers
         menuItemOpenReadOnly.setOnAction(e -> openFile(primaryStage, textArea, false));

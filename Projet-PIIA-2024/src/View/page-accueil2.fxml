@@ -33,7 +33,7 @@
       <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#66003e" height="48.0" layoutX="191.0" layoutY="167.0" stroke="TRANSPARENT" strokeType="INSIDE" width="220.0" />
       <Rectangle arcHeight="10.0" arcWidth="10.0" fill="#66003e" height="48.0" layoutX="192.0" layoutY="240.0" stroke="TRANSPARENT" strokeType="INSIDE" width="220.0" />
       <Button layoutX="68.0" layoutY="207.0" mnemonicParsing="false" onAction="#switchToScene1" style="-fx-background-color: #66003E;" />
-      <Button layoutX="195.0" layoutY="175.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="209.0" style="-fx-background-color: #66003E;" text="Charger un texte en lecture seule" textFill="WHITE" />
+      <Button layoutX="195.0" layoutY="175.0" mnemonicParsing="false" onAction="#goToLectureSeule" prefHeight="31.0" prefWidth="209.0" style="-fx-background-color: #66003E;" text="Charger un texte en lecture seule" textFill="WHITE" />
       <Button layoutX="207.0" layoutY="248.0" mnemonicParsing="false" prefHeight="31.0" prefWidth="191.0" style="-fx-background-color: #66003E;" text="Charger et Modifier un texte" textFill="WHITE" />
    </children>
 </AnchorPane>
