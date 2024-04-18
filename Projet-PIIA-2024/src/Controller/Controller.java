@@ -70,6 +70,14 @@ public class Controller {
         stage.show();
     }
 
+    public void goToEditable(ActionEvent actionEvent) throws IOException {
+        root = FXMLLoader.load(getClass().getResource("/View/page-edition.fxml"));
+        stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     public void lectureSeule() {
         TextArea textArea = view.getTextOpenReadOnly();
         System.out.println(textArea.getText());

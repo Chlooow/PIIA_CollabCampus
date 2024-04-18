@@ -79,7 +79,6 @@ public class FileController {
             }
         }
     }
-
     public void switchToScene1(ActionEvent actionEvent) throws IOException {
         root = FXMLLoader.load(getClass().getResource("/View/page-accueil.fxml"));
         stage = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
