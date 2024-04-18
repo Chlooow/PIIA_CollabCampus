@@ -7,6 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 import javafx.application.Application;
@@ -77,6 +78,19 @@ public class Controller {
         stage.setScene(scene);
         stage.show();
     }
+
+    // Add this method to switch to the scene with read-only text area
+    public void openReadOnlyScene(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/page-lecture-seule.fxml"));
+        Parent root = loader.load();
+        Scene scene = new Scene(root);
+
+        Stage stage = (Stage) ((MenuItem) event.getSource()).getParentPopup().getOwnerWindow();
+        stage.setScene(scene);
+        stage.show();
+    }
+
+
 
     public void lectureSeule() {
         TextArea textArea = view.getTextOpenReadOnly();

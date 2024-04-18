@@ -33,7 +33,7 @@
       <MenuButton layoutX="126.0" layoutY="17.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
         <items>
           <MenuItem mnemonicParsing="false" text="Creer un fichier" />
-          <MenuItem mnemonicParsing="false" text="Ouvrir en lecture seule" />
+          <MenuItem mnemonicParsing="false" text="Ouvrir en lecture seule" onAction="#openReadOnlyScene" />
             <MenuItem mnemonicParsing="false" text="Ouvrir pour modifier" />
         </items>
       </MenuButton>
