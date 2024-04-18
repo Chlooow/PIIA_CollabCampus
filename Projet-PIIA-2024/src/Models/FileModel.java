@@ -17,6 +17,7 @@ public class FileModel {
                 content.append(line).append("\n");
             }
         }
+        System.out.print("lecture du fichier reussi");
         return content.toString();
     }
 

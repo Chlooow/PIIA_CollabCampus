@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 
+import javax.swing.text.View;
 import java.awt.event.TextEvent;
 import java.io.IOException;
 
@@ -26,6 +27,7 @@ import java.io.IOException;
  */
 
 public class Controller {
+    public TextArea textOpenReadOnly; //= new TextArea();
     private Stage stage;
     private Scene scene;
     private Parent root;
@@ -36,9 +38,8 @@ public class Controller {
     public Controller() {
         this.modele = new FileModel();
         this.view = new FileView(modele);
+        //textOpenReadOnly.setText("Amineok");
     }
-
-
 
     // methods
 
@@ -70,7 +71,9 @@ public class Controller {
     }
 
     public void lectureSeule() {
-        TextArea textArea = new TextArea();
-        view.openFile(stage, textArea, false);
+        TextArea textArea = view.getTextOpenReadOnly();
+        System.out.println(textArea.getText());
+        view.openFile(stage, false);
+        System.out.println(textArea.getText());
     }
 }

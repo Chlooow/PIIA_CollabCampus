@@ -21,10 +21,10 @@ public class FileView {
     @FXML
     private TextArea textOpenReadOnly;
 
-
     public FileView(FileModel model) {
         this.model = model;
-        this.textOpenReadOnly = new TextArea("String");
+        //this.textOpenReadOnly = new TextArea();
+        //textOpenReadOnly.setText("Amineok");
     }
 
     // getter
@@ -32,7 +32,7 @@ public class FileView {
         return textOpenReadOnly;
     }
 
-    public void openFile(Stage primaryStage, TextArea textArea, boolean editable) {
+    public void openFile(Stage primaryStage, boolean editable) {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Ouvrir un fichier");
         fileChooser.getExtensionFilters().addAll(
@@ -42,15 +42,15 @@ public class FileView {
         File selectedFile = fileChooser.showOpenDialog(primaryStage);
 
         if (selectedFile != null) {
-            System.out.print("lol");
+            System.out.print("lol ");
             model.openFile(selectedFile);
-            /*try {
-                textArea.setText(model.readFileContent());
-            } catch (Exception ex) {
+            try {
+               textOpenReadOnly.setText(model.readFileContent());
+            } catch (IOException ex) {
                 ex.printStackTrace();
-            }*/
-            displayFileContent(selectedFile, textArea);
-            textArea.setEditable(editable);
+            }
+            displayFileContent(selectedFile, this.textOpenReadOnly);
+            textOpenReadOnly.setEditable(editable);
         }
     }
 
@@ -60,11 +60,11 @@ public class FileView {
             StringBuilder content = new StringBuilder();
             String line;
             while ((line = reader.readLine()) != null) {
-
+                System.out.print(line);
                 content.append(line).append("\n");
             }
-            System.out.print("haha");
-            textArea.setText(content.toString());
+            textArea.setText("Amine");
+            System.out.print("Texte affiché :)");
         } catch (IOException ex) {
             ex.printStackTrace();
         }
