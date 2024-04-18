@@ -82,7 +82,27 @@ public class Controller {
             ex.printStackTrace();
         }
     }
-    // Method to save the current content of the text area to the file
+    @FXML
+    private void saveFileAs() {
+        Stage primaryStage = (Stage) textModifiable.getScene().getWindow();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Save As");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Text Files", "*.txt"),
+                new FileChooser.ExtensionFilter("All Files", "*.*"));
+
+        File selectedFile = fileChooser.showSaveDialog(primaryStage);
+
+        if (selectedFile != null) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(selectedFile))) {
+                writer.write(textModifiable.getText());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+
     @FXML
     private void saveFile() {
         if (openedFile != null) {
@@ -91,8 +111,12 @@ public class Controller {
             } catch (IOException ex) {
                 ex.printStackTrace();
             }
+        } else {
+            // Handle the case where no file is opened
+            System.out.println("No file opened. Cannot save.");
         }
     }
+
 
 
     // ---------------------------------
