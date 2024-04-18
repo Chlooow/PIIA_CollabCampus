@@ -13,8 +13,8 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #505050;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Controller">
    <children>
-      <TextArea layoutY="59.0" prefHeight="282.0" prefWidth="252.0" />
-      <TextArea layoutX="347.0" layoutY="59.0" prefHeight="282.0" prefWidth="252.0" />
+      <TextArea fx:id="referenceText" layoutY="59.0" prefHeight="282.0" prefWidth="252.0" editable="false" />
+      <TextArea fx:id="textModifiable" layoutX="347.0" layoutY="59.0" prefHeight="282.0" prefWidth="252.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#66003e" height="59.0" stroke="TRANSPARENT" strokeType="INSIDE" width="600.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#66003e" height="59.0" layoutX="-7.0" layoutY="341.0" stroke="TRANSPARENT" strokeType="INSIDE" width="607.0" />
       <MenuButton layoutX="284.0" layoutY="200.0" mnemonicParsing="false" style="-fx-background-color: #F1E4EC;">
@@ -33,8 +33,8 @@
       <MenuButton layoutX="126.0" layoutY="17.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
         <items>
           <MenuItem mnemonicParsing="false" text="Creer un fichier" />
-          <MenuItem mnemonicParsing="false" text="Ouvrir en lecture seule" onAction="#openReadOnlyScene" />
-            <MenuItem mnemonicParsing="false" text="Ouvrir pour modifier" />
+          <MenuItem mnemonicParsing="false" onAction="#openReadOnlyScene" text="Ouvrir en lecture seule" />
+            <MenuItem mnemonicParsing="false" onAction="#openReadOnly" text="Ouvrir pour modifier" />
         </items>
       </MenuButton>
       <MenuButton layoutX="158.0" layoutY="17.0" mnemonicParsing="false" style="-fx-background-color: transparent;">

@@ -3,12 +3,14 @@ package Controller;
 import Models.FileModel;
 import View.FileView;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
@@ -19,7 +21,7 @@ import javafx.stage.Stage;
 
 import javax.swing.text.View;
 import java.awt.event.TextEvent;
-import java.io.IOException;
+import java.io.*;
 
 /** Controller: The controller acts as an intermediary between the model and the view.
  It handles user input, updates the model accordingly, and updates the view to reflect any changes in the model.
@@ -28,12 +30,72 @@ import java.io.IOException;
  */
 
 public class Controller {
-    public TextArea textOpenReadOnly; //= new TextArea();
+   // public TextArea textOpenReadOnly; //= new TextArea();
     private Stage stage;
     private Scene scene;
     private Parent root;
     private FileView view;
     private FileModel modele;
+
+    private File openedFile = null;
+
+    @FXML
+    private TextArea referenceText;
+
+    @FXML
+    private TextArea textModifiable;
+
+    @FXML
+    private void openReadOnly() {
+        openFile();
+    }
+
+    // Method to open a file
+    private void openFile() {
+        Stage primaryStage = (Stage) referenceText.getScene().getWindow();
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open a file");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Text Files", "*.txt"),
+                new FileChooser.ExtensionFilter("All Files", "*.*"));
+
+        File selectedFile = fileChooser.showOpenDialog(primaryStage);
+
+        if (selectedFile != null) {
+            openedFile = selectedFile;
+            displayFileContent(referenceText);
+            displayFileContent(textModifiable);
+            textModifiable.setEditable(true);
+        }
+    }
+
+    // Method to display the content of the file in the text area
+    private void displayFileContent(TextArea textArea) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(openedFile))) {
+            StringBuilder content = new StringBuilder();
+            String line;
+            while ((line = reader.readLine()) != null) {
+                content.append(line).append("\n");
+            }
+            textArea.setText(content.toString());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+    // Method to save the current content of the text area to the file
+    @FXML
+    private void saveFile() {
+        if (openedFile != null) {
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(openedFile))) {
+                writer.write(textModifiable.getText());
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
+    }
+
+
+    // ---------------------------------
 
     // constructor
     public Controller() {
@@ -91,7 +153,8 @@ public class Controller {
     }
 
 
-
+//---------------------------------
+    // brouillon
     public void lectureSeule() {
         TextArea textArea = view.getTextOpenReadOnly();
         System.out.println(textArea.getText());
