@@ -1,6 +1,7 @@
 package Controller;
 
 import Models.FileModel;
+import Models.TextDifferenceSpotter;
 import View.FileView;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -52,6 +53,7 @@ public class Controller {
     private void openReadOnly() {
         openFile();
     }
+
 
     // Method to open a file
     private void openFile() {
@@ -128,6 +130,14 @@ public class Controller {
         stage.showAndWait(); // Wait for comment window to close before proceeding
     }
 
+    // ---------------------------------
+
+    // differences de textes
+    @FXML
+    private void spotDifferences() {
+        TextDifferenceSpotter differenceSpotter = new TextDifferenceSpotter();
+        differenceSpotter.spotDifferences(referenceText, textModifiable);
+    }
 
     // ---------------------------------
 
