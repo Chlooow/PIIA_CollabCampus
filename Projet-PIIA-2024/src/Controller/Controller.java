@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TextArea;
 import javafx.stage.FileChooser;
@@ -44,6 +45,8 @@ public class Controller {
 
     @FXML
     private TextArea textModifiable;
+    @FXML
+    private Button viewCommentBtn;
 
     @FXML
     private void openReadOnly() {
@@ -117,6 +120,13 @@ public class Controller {
         }
     }
 
+    @FXML
+    private void openCommentWindow() throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/View/comment-Window.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene(loader.load()));
+        stage.showAndWait(); // Wait for comment window to close before proceeding
+    }
 
 
     // ---------------------------------
@@ -175,6 +185,8 @@ public class Controller {
         stage.setScene(scene);
         stage.show();
     }
+
+
 
 
 //---------------------------------

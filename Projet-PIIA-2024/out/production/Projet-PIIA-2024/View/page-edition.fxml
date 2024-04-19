@@ -13,7 +13,7 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #505050;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Controller">
    <children>
-      <TextArea fx:id="referenceText" layoutY="59.0" prefHeight="282.0" prefWidth="252.0" editable="false" />
+      <TextArea fx:id="referenceText" editable="false" layoutY="59.0" prefHeight="282.0" prefWidth="252.0" />
       <TextArea fx:id="textModifiable" layoutX="347.0" layoutY="59.0" prefHeight="282.0" prefWidth="252.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#66003e" height="59.0" stroke="TRANSPARENT" strokeType="INSIDE" width="600.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#66003e" height="59.0" layoutX="-7.0" layoutY="341.0" stroke="TRANSPARENT" strokeType="INSIDE" width="607.0" />
@@ -22,7 +22,7 @@
           <MenuItem mnemonicParsing="false" text="Accepter" />
           <MenuItem mnemonicParsing="false" text="Refuser" />
             <MenuItem mnemonicParsing="false" text="Editer" />
-            <MenuItem mnemonicParsing="false" text="Remarque" />
+            <MenuItem mnemonicParsing="false" onAction="#openCommentWindow" text="Remarque" />
         </items>
       </MenuButton>
       <ImageView fitHeight="35.0" fitWidth="176.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
@@ -55,5 +55,11 @@
          </font>
       </Label>
       <Button layoutX="55.0" layoutY="17.0" mnemonicParsing="false" onAction="#switchToScene1" prefHeight="9.0" prefWidth="16.0" style="-fx-background-color: transparent;" />
+      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="284.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/view-comment-btn.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="viewCommentBtn" onAction="#openCommentWindow" layoutX="292.0" layoutY="151.0" mnemonicParsing="false" style="-fx-background-color: transparent;" />
    </children>
 </AnchorPane>
