@@ -1,6 +1,15 @@
 # PIIA_CollabCampus
 PIIA - 2023/2024 Projet groupe 3 édition de texte binôme : Chéïma Hamrouni
 
+fonction pour mettre la date :
+
+```// Calculate modification based on the hour of the system
+            LocalDateTime currentTime = LocalDateTime.now();
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+            String formattedTime = currentTime.format(formatter);
+            System.out.println("Modification at: " + formattedTime);
+```
+
 ok : Charger un fichier TXT de référence pouvant comporter jusqu’à 10 000 signes. Les
 fichiers TXT sont des fichiers de texte brut, sans formatage. Il n’est pas attendu que le
 programme prenne en compte des modifications de formatage. Ce texte devra être en
