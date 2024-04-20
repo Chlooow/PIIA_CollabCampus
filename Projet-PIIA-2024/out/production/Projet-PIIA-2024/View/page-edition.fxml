@@ -19,8 +19,8 @@
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#66003e" height="59.0" layoutX="-7.0" layoutY="341.0" stroke="TRANSPARENT" strokeType="INSIDE" width="607.0" />
       <MenuButton layoutX="284.0" layoutY="200.0" mnemonicParsing="false" style="-fx-background-color: #F1E4EC;">
         <items>
-          <MenuItem mnemonicParsing="false" text="Accepter" />
-          <MenuItem mnemonicParsing="false" text="Refuser" />
+          <MenuItem mnemonicParsing="false" text="Accepter" onAction="#acceptModification"/>
+          <MenuItem mnemonicParsing="false" text="Refuser" onAction="#refuseModification"/>
             <MenuItem mnemonicParsing="false" text="Editer" onAction="#spotDifferences"/>
             <MenuItem mnemonicParsing="false" onAction="#openCommentWindow" text="Remarque" />
         </items>

@@ -1,5 +1,6 @@
 package Controller;
 
+import Models.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,6 +12,7 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 public class CommentController {
+    private Model modele;
     @FXML
     private TextArea commentaireArea;
     @FXML
@@ -20,6 +22,10 @@ public class CommentController {
 
     private String savedComment = "";
     private final String commentFilePath = "comment.txt";
+
+    public CommentController() {
+        modele = new Model();
+    }
 
     @FXML
     private void initialize() {
@@ -50,6 +56,7 @@ public class CommentController {
             e.printStackTrace();
         }
         commentaireArea.setEditable(false);
+        modele.showAlert("Comment saved successfully!");
     }
 
     @FXML
@@ -58,9 +65,8 @@ public class CommentController {
     }
 
     @FXML
-    private void viewComment(ActionEvent event) {
-        // Code to show the comment in a dialog, popover, or another window
-        // For example, you can open a new window and display the comment there
+    private void confirmation(){
+
     }
 }
 

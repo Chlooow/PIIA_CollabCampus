@@ -107,7 +107,6 @@ public class Controller {
         }
     }
 
-
     @FXML
     private void saveFile() {
         if (openedFile != null) {
@@ -131,6 +130,19 @@ public class Controller {
     }
 
     // ---------------------------------
+    // accepter les modifications
+    @FXML
+    private void acceptModification(){
+        TextDifferenceSpotter differenceSpotter = new TextDifferenceSpotter();
+        differenceSpotter.acceptModification(referenceText, textModifiable);
+    }
+
+    // refuser les modifications
+    @FXML
+    private void refuseModification(){
+        TextDifferenceSpotter differenceSpotter = new TextDifferenceSpotter();
+        differenceSpotter.refuseModification(referenceText, textModifiable);
+    }
 
     // differences de textes
     @FXML
@@ -195,7 +207,6 @@ public class Controller {
         stage.setScene(scene);
         stage.show();
     }
-
 
 
 

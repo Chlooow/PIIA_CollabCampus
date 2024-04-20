@@ -4,11 +4,16 @@ import com.github.difflib.DiffUtils;
 import com.github.difflib.patch.Patch;
 import com.github.difflib.text.DiffRow;
 import com.github.difflib.text.DiffRowGenerator;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TextArea;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 
 public class TextDifferenceSpotter {
     public void spotDifferences(TextArea referenceText, TextArea textModifiable) {
@@ -34,30 +39,64 @@ public class TextDifferenceSpotter {
         // Generate diff rows
         List<DiffRow> diffRows = diffRowGenerator.generateDiffRows(lines1, lines2);
 
-        // Clear the listView
-        //listView.getItems().clear();
+        // Calculate modification based on the hour of the system
+        LocalDateTime currentTime = LocalDateTime.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
+        String formattedTime = currentTime.format(formatter);
 
         // Display the differences
         for (DiffRow row : diffRows) {
             String line = row.getTag() == DiffRow.Tag.CHANGE ? row.getOldLine() : row.getNewLine();
-            Color color = row.getTag() == DiffRow.Tag.INSERT ? Color.BLACK : Color.web("#66003E");
-
-            String hexColor = String.format("#%02X%02X%02X", (int)(color.getRed() * 255), (int)(color.getGreen() * 255), (int)(color.getBlue() * 255));
 
             if (row.getTag() == DiffRow.Tag.INSERT) {
-                referenceText.setStyle("-fx-highlight-fill: " + hexColor + ";");
-                textModifiable.setStyle("-fx-highlight-fill: " + hexColor + ";");
+                referenceText.setStyle("-fx-highlight-fill: #66003E;");
+                textModifiable.setStyle("-fx-highlight-fill: #66003E;");
                 // Handle added lines
-                System.out.println("Added: " + row.getNewLine());
+                System.out.println("Added: " + row.getNewLine() + " Modification at: " + formattedTime);
             } else if (row.getTag() == DiffRow.Tag.DELETE) {
+                referenceText.setStyle("-fx-highlight-fill: red;");
+                textModifiable.setStyle("-fx-highlight-fill: red;");
                 // Handle deleted lines
-                System.out.println("Deleted: " + row.getOldLine());
+                System.out.println("Deleted: " + row.getOldLine() + " Modification at: " + formattedTime);
             } else if (row.getTag() == DiffRow.Tag.CHANGE) {
+                referenceText.setStyle("-fx-text-fill: #66003E;");
+                textModifiable.setStyle("-fx-text-fill: #66003E;");
                 // Handle changed lines
-                referenceText.setStyle("-fx-text-fill:" + hexColor + ";");
-                textModifiable.setStyle("-fx-text-fill:" + hexColor + ";");
-                System.out.println("Changed: " + row.getOldLine() + " -> " + row.getNewLine());
+                System.out.println("Changed: " + row.getOldLine() + " -> " + row.getNewLine() + " Modification at: " + formattedTime);
             }
         }
     }
+
+    public void acceptModification(TextArea referenceText, TextArea textModifiable) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Accept Modification");
+        alert.setContentText("Are you sure you want to accept the modification?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            showAlert("Tu as accepté la modification");
+        }    }
+
+    public void refuseModification(TextArea referenceText, TextArea textModifiable) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText(null);
+        alert.setContentText("Êtes-vous sûr de vouloir refuser la modification ?");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            textModifiable.setText(referenceText.getText());
+            showAlert("Tu as refusé la modification");
+        }
+    }
+
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Information");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
 }
