@@ -84,8 +84,21 @@ public class CommentController {
     @FXML
     private void selectComment() {
         String selectedComment = commentChoiceBox.getValue();
-        String readComment = modele.readCommentFile(COMMENT_DIRECTORY + "/" + selectedComment);
-        commentaireArea.setText(readComment);
+        if (selectedComment != null) {
+            String commentFilePath = COMMENT_DIRECTORY + "/" + selectedComment;
+            File commentFile = new File(commentFilePath);
+
+            if (commentFile.exists()) {
+                // The selected comment file exists, read its content
+                String readComment = modele.readCommentFile(commentFilePath);
+                commentaireArea.setText(readComment);
+            } else {
+                modele.showAlert("Selected comment file does not exist.");
+                commentaireArea.clear(); // Clear the TextArea if the file doesn't exist
+            }
+        } else {
+            modele.showAlert("No comment file selected.");
+        }
     }
 
     private void populateCommentChoiceBox() {
@@ -108,6 +121,27 @@ public class CommentController {
     @FXML
     private void deleteComment() {
         String selectedComment = commentChoiceBox.getValue();
+        if (selectedComment != null) {
+            String commentFilePath = COMMENT_DIRECTORY + "/" + selectedComment;
+            File commentFile = new File(commentFilePath);
 
+            if (commentFile.exists()) {
+                if (commentFile.delete()) {
+                    // Successfully deleted the comment file
+                    modele.showAlert("Comment deleted successfully!");
+                    // Refresh the choice box after deletion
+                    populateCommentChoiceBox();
+                    // Set the choice box value to null
+                    commentChoiceBox.setValue(null);
+                } else {
+                    modele.showAlert("Failed to delete the comment file.");
+                }
+            } else {
+                modele.showAlert("Selected comment file does not exist.");
+            }
+        } else {
+            modele.showAlert("No comment file selected.");
+        }
     }
 }
+
