@@ -1,17 +1,21 @@
 package Controller;
 
 import Models.Model;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextArea;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class CommentController {
@@ -25,49 +29,51 @@ public class CommentController {
     @FXML
     private ChoiceBox<String> commentChoiceBox;
 
-    private List<String> comments = new ArrayList<>();
-    private final String commentFilePath = "comment.txt";
+    // Constants
+    private static final int MAX_CHARACTER_LIMIT = 200; // Adjust this as needed
+    private static final String COMMENT_DIRECTORY = "src/Commentaires";
 
     public CommentController() {
         modele = new Model();
     }
 
+    // --------------------------
+
     @FXML
     private void initialize() {
         // Set the TextArea initially non-editable
         commentaireArea.setEditable(false);
-        // Retrieve the saved comments from the file
-        try {
-            if (Files.exists(Paths.get(commentFilePath))) {
-                comments = Files.readAllLines(Paths.get(commentFilePath));
-            } else {
-                Files.createFile(Paths.get(commentFilePath));
-            }
-        } catch (IOException e) {
-            // Handle file read/write error
-            e.printStackTrace();
-        }
-        commentChoiceBox.getItems().addAll(comments);
-        if (!comments.isEmpty()) {
-            commentChoiceBox.setValue(comments.get(0));
-            commentaireArea.setText(comments.get(0));
-        }
+        populateCommentChoiceBox();
+
     }
 
     @FXML
     private void saveComment() {
-        // Get the comment from the TextArea
-        String comment = commentaireArea.getText();
-        // Save the comment to the file and add it to the list
-        comments.add(comment);
-        try {
-            Files.write(Paths.get(commentFilePath), comments);
-        } catch (IOException e) {
-            // Handle file write error
-            e.printStackTrace();
-        }
+        String commentaire = commentaireArea.getText();
         commentaireArea.setEditable(false);
-        modele.showAlert("Comment saved successfully!");
+        if (commentaire.length() <= MAX_CHARACTER_LIMIT) {
+            // Check if the selected comment file already exists
+            String selectedComment = commentChoiceBox.getValue();
+            String commentFilePath = COMMENT_DIRECTORY + "/" + selectedComment;
+            File existingFile = new File(commentFilePath);
+
+            if (existingFile.exists()) {
+                // Update the existing comment file
+                modele.updateComment(commentFilePath, commentaire);
+            } else {
+                // Save the comment (create a new comment file)
+                modele.createComment(commentaire);
+            }
+            modele.showAlert("Comment saved successfully!");
+        } else {
+            modele.showAlert("Comment cannot exceed " + MAX_CHARACTER_LIMIT + " characters.");
+        }
+    }
+
+    @FXML
+    private void newComment() {
+        commentaireArea.clear();
+        commentaireArea.setEditable(true);
     }
 
     @FXML
@@ -78,6 +84,30 @@ public class CommentController {
     @FXML
     private void selectComment() {
         String selectedComment = commentChoiceBox.getValue();
-        commentaireArea.setText(selectedComment);
+        String readComment = modele.readCommentFile(COMMENT_DIRECTORY + "/" + selectedComment);
+        commentaireArea.setText(readComment);
+    }
+
+    private void populateCommentChoiceBox() {
+        // Get the list of files in the comment directory
+        File directory = new File(COMMENT_DIRECTORY);
+        File[] files = directory.listFiles();
+
+        if (files != null) {
+            // Convert file array to list of file names
+            ObservableList<String> fileNames = FXCollections.observableArrayList();
+            Arrays.stream(files).forEach(file -> fileNames.add(file.getName()));
+
+            // Add the file names to the choice box
+            commentChoiceBox.setItems(fileNames);
+        } else {
+            System.out.println("No comment files found in the directory: " + directory);
+        }
+    }
+
+    @FXML
+    private void deleteComment() {
+        String selectedComment = commentChoiceBox.getValue();
+
     }
 }
