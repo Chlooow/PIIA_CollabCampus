@@ -29,7 +29,8 @@ il reste à faire :
  Refuser des modifications.
 
 
-```import Models.Model;
+```java
+import Models.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -111,7 +112,8 @@ public class CommentController {
         String selectedComment = commentChoiceBox.getValue();
         commentaireArea.setText(selectedComment);
     }
-}```
+}
+```
 
 
  Commenter des modifications.
