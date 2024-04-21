@@ -10,13 +10,22 @@ import javafx.scene.control.TextArea;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Optional;
 
 public class TextDifferenceSpotter {
+    String originalText = "";
+    private LocalDateTime lastModificationTimestamp = LocalDateTime.MIN;
     public void spotDifferences(TextArea referenceText, TextArea textModifiable) {
+        if (originalText.isEmpty()) {
+            originalText = textModifiable.getText();
+        }
         // Get text content from both text areas
         String text1 = referenceText.getText();
         String text2 = textModifiable.getText();
@@ -64,19 +73,23 @@ public class TextDifferenceSpotter {
                 // Handle changed lines
                 System.out.println("Changed: " + row.getOldLine() + " -> " + row.getNewLine() + " Modification at: " + formattedTime);
             }
+            lastModificationTimestamp = LocalDateTime.now();
         }
     }
 
     public void acceptModification(TextArea referenceText, TextArea textModifiable) {
+        System.out.println(originalText);
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");
         alert.setHeaderText("Accept Modification");
         alert.setContentText("Are you sure you want to accept the modification?");
+        originalText = textModifiable.getText();
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
             showAlert("Tu as accepté la modification");
-        }    }
+        }
+    }
 
     public void refuseModification(TextArea referenceText, TextArea textModifiable) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);

@@ -4,12 +4,15 @@ import Models.Model;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CommentController {
     private Model modele;
@@ -19,8 +22,10 @@ public class CommentController {
     private Button editCommentButton;
     @FXML
     private Button saveCommentButton;
+    @FXML
+    private ChoiceBox<String> commentChoiceBox;
 
-    private String savedComment = "";
+    private List<String> comments = new ArrayList<>();
     private final String commentFilePath = "comment.txt";
 
     public CommentController() {
@@ -31,10 +36,10 @@ public class CommentController {
     private void initialize() {
         // Set the TextArea initially non-editable
         commentaireArea.setEditable(false);
-        // Retrieve the saved comment from the file
+        // Retrieve the saved comments from the file
         try {
             if (Files.exists(Paths.get(commentFilePath))) {
-                savedComment = new String(Files.readAllBytes(Paths.get(commentFilePath)));
+                comments = Files.readAllLines(Paths.get(commentFilePath));
             } else {
                 Files.createFile(Paths.get(commentFilePath));
             }
@@ -42,15 +47,21 @@ public class CommentController {
             // Handle file read/write error
             e.printStackTrace();
         }
-        commentaireArea.setText(savedComment);
+        commentChoiceBox.getItems().addAll(comments);
+        if (!comments.isEmpty()) {
+            commentChoiceBox.setValue(comments.get(0));
+            commentaireArea.setText(comments.get(0));
+        }
     }
+
     @FXML
     private void saveComment() {
         // Get the comment from the TextArea
-        savedComment = commentaireArea.getText();
-        // Save the comment to the file
+        String comment = commentaireArea.getText();
+        // Save the comment to the file and add it to the list
+        comments.add(comment);
         try {
-            Files.write(Paths.get(commentFilePath), savedComment.getBytes());
+            Files.write(Paths.get(commentFilePath), comments);
         } catch (IOException e) {
             // Handle file write error
             e.printStackTrace();
@@ -65,8 +76,8 @@ public class CommentController {
     }
 
     @FXML
-    private void confirmation(){
-
+    private void selectComment() {
+        String selectedComment = commentChoiceBox.getValue();
+        commentaireArea.setText(selectedComment);
     }
 }
-
