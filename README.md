@@ -16,16 +16,10 @@ lecture seule.
 
 il reste à faire :
 
- Charger un fichier TXT comportant des modifications par rapport au texte de référence.
- Visualiser les deux textes à comparer côte à côte (le texte de référence et le texte modifié, plus récent) et distinguer les différents types de modifications (ajouts, suppressions, remplacements).
- Accepter des modifications.
- Refuser des modifications.
-
-
-
-
- Commenter des modifications.
- Éditer librement le texte comportant les modifications afin de formuler des contre�propositions. Les contre-propositions doivent être distinguables des autres types de
+- Charger un fichier TXT comportant des modifications par rapport au texte de référence.
+- distinguer les différents types de modifications (ajouts, suppressions, remplacements).
+- Accepter des modifications.
+- Refuser des modifications.
+- Éditer librement le texte comportant les modifications afin de formuler des contre�propositions. Les contre-propositions doivent être distinguables des autres types de
 modifications.
- Sauvegarder au format TXT le fichier résultant du travail effectué sur les modifications
-(acceptions, refus et contre-propositions).
+
