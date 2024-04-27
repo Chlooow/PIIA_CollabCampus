@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Circle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #F1E4EC;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Controller">
+   <children>
+      <Label layoutX="142.0" layoutY="50.0" prefHeight="36.0" prefWidth="337.0" text="Bienvenue sur CollabCampus" textFill="#66003e">
+         <font>
+            <Font name="Arial Rounded MT Bold" size="23.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="124.0" fitWidth="110.0" layoutX="49.0" layoutY="168.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/piia-logo_bg_rm.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="107.0" fitWidth="81.0" layoutX="457.0" layoutY="173.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/rouage.png" />
+         </image>
+      </ImageView>
+      <Circle fill="#66003e" layoutX="300.0" layoutY="222.0" radius="45.0" stroke="TRANSPARENT" strokeType="INSIDE" />
+      <Button layoutX="280.0" layoutY="204.0" mnemonicParsing="false" onAction="#switchToScene2" prefHeight="36.0" prefWidth="40.0" text="+">
+         <font>
+            <Font size="17.0" />
+         </font>
+      </Button>
+      <Label layoutX="193.0" layoutY="86.0" prefHeight="38.0" prefWidth="236.0" text="Cliquez sur le bouton “+” pour commencer">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
