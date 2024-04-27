@@ -1,6 +1,22 @@
 # PIIA_CollabCampus
 PIIA - 2023/2024 Projet groupe 3 édition de texte binôme : Chéïma Hamrouni Makoundou Chloe
 
+--------------
+
+### ATTENTION : CHECK DESCRIPTION
+BackUP : Ceci est un back up ! car je suis en train de faire des modifs et tu as deja recuperé une version. Dessus j'ai rajouté des trucs qu'il n'y a pas dans le projet principale :
+
+- J'ai reglé EDITER pour que ce soit moins ambigue
+tu clique dessus le TEXT MODIFIABLE devient editable et lorsque tu appuis sur le bouton check en haut à gauche ca rend text editable non editable et ca t'affiche le temps de la dernière modification
+
+IL RESTE A FAIRE :
+
+- Refuser
+- Accepter
+- Régler la couleur de marquage de modification
+
+--------------
+
 ok : Charger un fichier TXT de référence pouvant comporter jusqu’à 10 000 signes. Les
 fichiers TXT sont des fichiers de texte brut, sans formatage. Il n’est pas attendu que le
 programme prenne en compte des modifications de formatage. Ce texte devra être en
