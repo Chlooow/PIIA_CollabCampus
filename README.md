@@ -14,7 +14,7 @@ lecture seule.
 
 ---------
 
-il reste à faire :
+il reste à faire par rapport au cahier des charges:
 
 - Charger un fichier TXT comportant des modifications par rapport au texte de référence.
 - distinguer les différents types de modifications (ajouts, suppressions, remplacements).
