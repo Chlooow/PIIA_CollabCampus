@@ -20,6 +20,6 @@ il reste à faire :
 - distinguer les différents types de modifications (ajouts, suppressions, remplacements).
 - Accepter des modifications.
 - Refuser des modifications.
-- Éditer librement le texte comportant les modifications afin de formuler des contre�propositions. Les contre-propositions doivent être distinguables des autres types de
+- Éditer librement le texte comportant les modifications afin de formuler des contre-propositions. Les contre-propositions doivent être distinguables des autres types de
 modifications.
 
