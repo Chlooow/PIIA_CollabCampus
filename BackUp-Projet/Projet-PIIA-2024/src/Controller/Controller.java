@@ -64,7 +64,6 @@ public class Controller {
         openFile();
     }
 
-
     // Method to open a file
     private void openFile() {
         Stage primaryStage = (Stage) referenceText.getScene().getWindow();

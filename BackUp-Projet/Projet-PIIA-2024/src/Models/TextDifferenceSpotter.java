@@ -31,6 +31,16 @@ public class TextDifferenceSpotter {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("HH:mm:ss");
         return currentTime.format(formatter);
     }
+
+    public String tokenization(String text) {
+        // Tokenize the text
+        String[] tokens = text.split(" ");
+        StringBuilder tokenizedText = new StringBuilder();
+        for (String token : tokens) {
+            tokenizedText.append(token).append("\n");
+        }
+        return tokenizedText.toString();
+    }
     public void spotDifferences(TextArea referenceText, TextArea textModifiable) {
         if (originalText.isEmpty()) {
             originalText = textModifiable.getText();
@@ -87,12 +97,18 @@ public class TextDifferenceSpotter {
         alert.setTitle("Confirmation");
         alert.setHeaderText("Accept Modification");
         alert.setContentText("Are you sure you want to accept the modification?");
-        if(!textModifiable.getText().equals(referenceText)) {
-            referenceText = textModifiable.getText();
-        }
+        List<String> lines = new ArrayList<>();
+        String originalText = referenceText;
+
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
+            String modifiedText = textModifiable.getText();
+            String diff = tokenization(modifiedText.substring(originalText.length()));
+            lines.add(diff);
+            for(String line : lines) {
+                System.out.println(line);
+            }
             showAlert("Tu as accepté la modification");
         }
     }
@@ -105,7 +121,14 @@ public class TextDifferenceSpotter {
 
         Optional<ButtonType> result = alert.showAndWait();
         if (result.isPresent() && result.get() == ButtonType.OK) {
-            textModifiable.setText(referenceText);
+            //String diff = tokenization(textModifiable.getText().substring(referenceText.length()));
+            String modifiedText = textModifiable.getText();
+            String[] tokens = modifiedText.split(" ");
+            StringBuilder tokenizedText = new StringBuilder();
+            for (int i = 0; i < tokens.length - 1; i++) {
+                tokenizedText.append(tokens[i]).append(" ");
+            }
+            textModifiable.setText(tokenizedText.toString().trim());
             showAlert("Tu as refusé la modification");
         }
     }

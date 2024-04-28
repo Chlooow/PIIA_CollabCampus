@@ -67,6 +67,6 @@
          </image>
       </ImageView>
       <Button fx:id="buttonokedition" layoutX="465.0" layoutY="17.0" mnemonicParsing="false" onAction="#spotDifference" style="-fx-background-color: transparent;" visible="false" />
-      <Label fx:id="modificationtime" layoutX="361.0" layoutY="357.0" prefHeight="30.0" prefWidth="237.0" text="." textFill="WHITE" />
+      <Label fx:id="modificationtime" layoutX="361.0" layoutY="357.0" prefHeight="30.0" prefWidth="237.0" text="." textAlignment="CENTER" textFill="WHITE" />
    </children>
 </AnchorPane>
