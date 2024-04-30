@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.MenuButton?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #505050;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Controller">
+   <children>
+      <TextArea fx:id="referenceText" editable="false" layoutY="59.0" prefHeight="282.0" prefWidth="252.0" />
+      <TextArea fx:id="textModifiable" editable="false" layoutX="347.0" layoutY="59.0" prefHeight="282.0" prefWidth="252.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#66003e" height="59.0" stroke="TRANSPARENT" strokeType="INSIDE" width="600.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#66003e" height="59.0" layoutX="-7.0" layoutY="341.0" stroke="TRANSPARENT" strokeType="INSIDE" width="607.0" />
+      <MenuButton layoutX="284.0" layoutY="200.0" mnemonicParsing="false" style="-fx-background-color: #F1E4EC;">
+        <items>
+          <MenuItem mnemonicParsing="false" onAction="#acceptModification" text="Accepter" />
+          <MenuItem mnemonicParsing="false" onAction="#refuseModification" text="Refuser" />
+            <MenuItem mnemonicParsing="false" onAction="#edition" text="Editer" />
+            <MenuItem mnemonicParsing="false" onAction="#openCommentWindow" text="Remarque" />
+        </items>
+      </MenuButton>
+      <ImageView fitHeight="35.0" fitWidth="176.0" layoutX="14.0" layoutY="15.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/lesbtns.png" />
+         </image>
+      </ImageView>
+      <MenuButton layoutX="126.0" layoutY="17.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+        <items>
+          <MenuItem mnemonicParsing="false" text="Creer un fichier" />
+          <MenuItem mnemonicParsing="false" onAction="#openReadOnlyScene" text="Ouvrir en lecture seule" />
+            <MenuItem mnemonicParsing="false" onAction="#openReadOnly" text="Ouvrir pour modifier" />
+        </items>
+      </MenuButton>
+      <MenuButton layoutX="158.0" layoutY="17.0" mnemonicParsing="false" style="-fx-background-color: transparent;">
+         <items>
+            <MenuItem mnemonicParsing="false" onAction="#saveFileAs" text="Enregistrer sous" />
+            <MenuItem mnemonicParsing="false" onAction="#saveFile" text="Enregistrer" />
+         </items>
+      </MenuButton>
+      <Button layoutX="55.0" layoutY="17.0" mnemonicParsing="false" prefHeight="11.0" prefWidth="9.0" style="-fx-background-color: transparent;" />
+      <Label layoutX="75.0" layoutY="341.0" text="Texte de référence" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="422.0" layoutY="341.0" text="texte avec modification" textFill="WHITE">
+         <font>
+            <Font name="Arial" size="12.0" />
+         </font>
+      </Label>
+      <Button layoutX="55.0" layoutY="17.0" mnemonicParsing="false" onAction="#switchToScene1" prefHeight="9.0" prefWidth="16.0" style="-fx-background-color: transparent;" />
+      <ImageView fitHeight="30.0" fitWidth="32.0" layoutX="284.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../assets/view-comment-btn.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="viewCommentBtn" layoutX="292.0" layoutY="151.0" mnemonicParsing="false" onAction="#openCommentWindow" style="-fx-background-color: transparent;" />
+      <ImageView fx:id="imagebtnedit" fitHeight="30.0" fitWidth="101.0" layoutX="459.0" layoutY="16.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../assets/edition-btn.png" />
+         </image>
+      </ImageView>
+      <Button fx:id="buttonokedition" layoutX="465.0" layoutY="17.0" mnemonicParsing="false" onAction="#spotDifference" style="-fx-background-color: transparent;" visible="false" />
+      <Label fx:id="modificationtime" layoutX="361.0" layoutY="357.0" prefHeight="30.0" prefWidth="237.0" text="." textAlignment="CENTER" textFill="WHITE" />
+   </children>
+</AnchorPane>
