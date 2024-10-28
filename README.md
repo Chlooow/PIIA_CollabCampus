@@ -48,4 +48,4 @@ Chéïma Hamrouni
 *GROUP 3*
 
 ### Licence
-Ce projet est réalisé dans le cadre d’un projet de Licence à l’Université Paris-Saclay, sous la supervision de Yann Trividic et Ouriel Grynszpan.
+Ce projet est réalisé dans le cadre d’un projet de Licence à l’Université Paris-Saclay, sous la supervision de Yann Trividic et Ouriel Grynszpan pour le cours-option PIIA (Programmation Interfaces Intéractive Avancées)
