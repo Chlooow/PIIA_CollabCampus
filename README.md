@@ -1,41 +1,51 @@
-# PIIA_CollabCampus
-PIIA - 2023/2024 Projet groupe 3 édition de texte binôme : Chéïma Hamrouni Makoundou Chloe
+# CollabCampus
 
---------------
+CollabCampus est une application d’interface interactive, développée pour faciliter la comparaison et la fusion de modifications textuelles dans un contexte d’écriture collaborative. Ce projet est pensé pour les étudiants de l’Université Paris-Saclay, avec une inspiration tirée de la plateforme Ecampus, d'où son nom.
 
-### ATTENTION : CHECK DESCRIPTION
-BackUP : Ceci est un back up ! car je suis en train de faire des modifs et tu as deja recuperé une version. Dessus j'ai rajouté des trucs qu'il n'y a pas dans le projet principale :
+### Objectif
+L’objectif principal de CollabCampus est de permettre aux utilisateurs de comparer deux versions d’un même texte pour faciliter la fusion de modifications. L’application répond à des besoins tels que :
 
-- J'ai reglé EDITER pour que ce soit moins ambigue
-tu clique dessus le TEXT MODIFIABLE devient editable et lorsque tu appuis sur le bouton check en haut à gauche ca rend text editable non editable et ca t'affiche le temps de la dernière modification
+Garder une trace des modifications (ajouts, suppressions, remplacements)
+Évaluer ou valider des propositions de modifications par un autre utilisateur
+Converger vers une version finale commune.
+Fonctionnalités
+CollabCampus propose les fonctionnalités suivantes :
 
-IL RESTE A FAIRE :
+Chargement de fichiers TXT : Importer un fichier de texte brut (jusqu’à 10 000 caractères) comme référence en lecture seule.
+Comparaison de textes : Affichage côte à côte des textes de référence et modifié, avec identification visuelle des modifications (ajouts, suppressions, remplacements).
+Gestion des modifications : Accepter ou refuser des modifications, commenter chaque modification, et éditer librement le texte modifié pour proposer des contre-propositions distinctes.
+Sauvegarde : Exporter le résultat des modifications sous format TXT, y compris les décisions d’acceptation/refus et les contre-propositions.
 
-- Refuser
-- Accepter
-- Régler la couleur de marquage de modification
+### Architecture et Technologies
+**Langage** : Java avec JavaFX
+**Architecture** : Modèle-Vue-Contrôleur (MVC)
+**Bibliothèques** : java-diff-utils pour la détection des différences textuelles
+**IDE** : IntelliJ Ultimate / Eclipse
 
---------------
+### Conception de l’Interface
+L’interface a été conçue en tenant compte des concepts étudiés en Interfaces Interactives Avancées, avec :
 
-ok : Charger un fichier TXT de référence pouvant comporter jusqu’à 10 000 signes. Les
-fichiers TXT sont des fichiers de texte brut, sans formatage. Il n’est pas attendu que le
-programme prenne en compte des modifications de formatage. Ce texte devra être en
-lecture seule.
+Création de personas pour cibler les utilisateurs
+Scénarios et storyboards pour représenter l’utilisation de l’application
+Utilisation de heuristiques pour l’esthétique, la visibilité et la cohérence
 
-- on peu retourner sur la page d'accueil de la page de lecture seul
-- on peux access à la page editable depuis celle de lecture seule et inversement
-- je peux ouvrir le .txt dans les deux textAreas (un modifiable et 1 en lecture seul)
-- on peut "save as" mais pas simplement "Save"
-- on peu commenter et regarder le commentaire
+### Problèmes rencontrés
+Lors du développement, plusieurs défis ont été relevés :
 
----------
+Transition de SceneBuilder à Java pour certaines zones de texte
+Implémentation des fonctionnalités d’acceptation/refus des modifications
+Gestion des fichiers et des erreurs liées aux entrées utilisateur.
+Améliorations Futures
+Bien que notre application atteigne ses objectifs de base, nous envisageons d’ajouter :
 
-il reste à faire par rapport au cahier des charges:
+Une gestion plus avancée des erreurs
+Une amélioration de l’esthétique de l’interface pour une meilleure ergonomie
+Une intégration plus poussée pour répondre aux besoins futurs des utilisateurs.
 
-- Charger un fichier TXT comportant des modifications par rapport au texte de référence.
-- distinguer les différents types de modifications (ajouts, suppressions, remplacements).
-- Accepter des modifications.
-- Refuser des modifications.
-- Éditer librement le texte comportant les modifications afin de formuler des contre-propositions. Les contre-propositions doivent être distinguables des autres types de
-modifications.
+### Auteurs
+Chloé Makoundou
+Chéïma Hamrouni
+*GROUP 3*
 
+### Licence
+Ce projet est réalisé dans le cadre d’un projet de Licence à l’Université Paris-Saclay, sous la supervision de Yann Trividic et Ouriel Grynszpan.
